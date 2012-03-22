@@ -49,9 +49,17 @@ class Winslow::WizardController < ApplicationController
       last_wizard_path
     elsif step.is_a?(Hash)
       if Winslow.configuration.resource_lookup
-        options[:query_string] = build_query_string(step, options)
         path = Winslow.configuration.resource_lookup.call(options)
         raise "Unable to find resource path - #{options.inspect}" unless path
+
+        query_string = build_query_string(step, options)
+
+        if query_string.length > 0
+          path << (path.include?('?') ? '&' : '?')
+          path << query_string
+        end
+
+        path = path.gsub(/^https?:\/\//, request.protocol)
         path
       else
         raise 'No resource lookup method defined'
