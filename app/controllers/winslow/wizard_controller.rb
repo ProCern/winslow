@@ -20,6 +20,14 @@ class Winslow::WizardController < ApplicationController
     end
   end
 
+  def step
+    @step
+  end
+
+  def next_wizard_path
+    wizard_path @next_step
+  end
+
   def steps
     self.class.steps
   end
