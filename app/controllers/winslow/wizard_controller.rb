@@ -75,7 +75,7 @@ class Winslow::WizardController < ApplicationController
 
     if @skip_to.present?
       respond_to do |format|
-        format.ssmh { head :ok, location: wizard_path(@skip_to) } if format.respond_to? :ssmh
+        format.ssmh1 { head :ok, location: wizard_path(@skip_to) } if format.respond_to? :ssmh1
         format.html { redirect_to wizard_path(@skip_to) }
       end
     else
@@ -137,10 +137,10 @@ class Winslow::WizardController < ApplicationController
   def render_step(step)
     respond_to do |format|
       if step.nil? || step == last_step
-        format.ssmh { head :ok, location: last_wizard_path } if format.respond_to? :ssmh
+        format.ssmh1 { head :ok, location: last_wizard_path } if format.respond_to? :ssmh1
         format.html { redirect_to last_wizard_path }
       else
-        format.ssmh { render step, formats: [:html], layout: 'modal' } if format.respond_to? :ssmh
+        format.ssmh1 { render step, formats: [:html], layout: 'modal' } if format.respond_to? :ssmh1
         format.html { render step }
       end
     end
