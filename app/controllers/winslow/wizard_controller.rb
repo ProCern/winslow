@@ -1,7 +1,7 @@
 class Winslow::WizardController < ApplicationController
   helper_method :wizard_path
 
-  before_filter :setup_wizard
+  before_action :setup_wizard
 
   class << self
     def add_step(step)
