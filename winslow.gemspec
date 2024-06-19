@@ -18,5 +18,5 @@ Gem::Specification.new do |gem|
   gem.files = Dir['VERSION', 'README.md', 'app/**/*', 'lib/**/*']
   gem.require_path = 'lib'
 
-  gem.add_dependency 'rails', '< 6.0'
+  gem.add_dependency 'rails', '< 7.0'
 end
