@@ -26,7 +26,7 @@ In order to create a wizard, create a new controller and inherit from `Winslow::
 
       def update
         @user = current_user
-        @user.update_attributes(params[:user])
+        @user.update(params[:user])
         render_wizard @user
       end
 
@@ -75,7 +75,7 @@ other application for the second step above could look something like this.
 
       def update
         @user_preference = current_user_preference
-        @user_preference.update_attributes(params[:user_preference])
+        @user_preference.update(params[:user_preference])
         render_wizard @user_preference
       end
     end
